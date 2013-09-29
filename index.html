@@ -7,49 +7,61 @@
   </head>
   <body>
     <script type="text/x-handlebars" data-template-name="users">
-    <section id="userapp">
+      <section id="userapp">
       <section id="main">
-        <table>
-          <tr>
+      <table>
+        <tr>
           <td><label>First Name</label></td>
           <td><label>Last Name</label></td>
           <td><label>email</label></td>
-          </tr>
-          {{#each itemController="user"}}
-          <tr>
-            <td {{bind-attr class="isEditingFirstName:editing"}}>
-              {{#if isEditingFirstName}}
-                {{edit-user class="edit" value=firstName focus-out="acceptChanges" insert-newline="acceptChanges"}}
-
-              {{else}}
+        </tr>
+        <tr>
+          <td>
+          {{input type="text" id="new-first" placeholder="First Name" value=newFirstName action="createUser"}}
+          </td>
+          <td>
+          {{input type="text" id="new-last" placeholder="Last Name" value=newLastName action="createUser"}}
+          </td>
+          <td>
+          {{input type="text" id="new-email" placeholder="Email" value=newEmail action="createUser"}}
+          </td>
+        </tr>
+        {{#each itemController="user"}}
+        <tr>
+          <td {{bind-attr class="isEditingFirstName:editing"}}>
+            {{#if isEditingFirstName}}
+              {{edit-user class="edit" value=firstName focus-out="acceptChanges" insert-newline="acceptChanges"}}
+            {{else}}
               <label {{action "editUserFirstName" on="doubleClick"}}>{{firstName}}</label>
-              {{/if}}
-            </td>
-            <td {{bind-attr class="isEditingLastName:editing"}}>  
-             {{#if isEditingLastName}}
-                {{edit-user class="edit" value=lastName focus-out="acceptChanges" insert-newline="acceptChanges"}}
-              {{else}}
+            {{/if}}
+          </td>
+          <td {{bind-attr class="isEditingLastName:editing"}}>  
+            {{#if isEditingLastName}}
+              {{edit-user class="edit" value=lastName focus-out="acceptChanges" insert-newline="acceptChanges"}}
+            {{else}}
               <label {{action "editUserLastName" on="doubleClick"}}>{{lastName}}</label>
-              {{/if}}
-            </td>
-            <td {{bind-attr class="isEditingEmail:editing"}}>
-              {{#if isEditingEmail}}
-                {{edit-user class="edit" value=email focus-out="acceptChanges" insert-newline="acceptChanges"}}
-              {{else}}
+            {{/if}}
+          </td>
+          <td {{bind-attr class="isEditingEmail:editing"}}>
+            {{#if isEditingEmail}}
+              {{edit-user class="edit" value=email focus-out="acceptChanges" insert-newline="acceptChanges"}}
+            {{else}}
               <label {{action "editUserEmail" on="doubleClick"}}>{{email}}</label>
-              {{/if}}
-              </td>
-            </tr>
-          {{/each}}
-        </table>
+            {{/if}}
+          </td>
+          <td>
+          <button {{action "deleteUser"}}>delete</button>
+        </tr>
+        {{/each}}
+      </table>
       </section>
 
       <footer id="footer">
-        <span id="todo-count">
-          <strong>{{remaining}} what</strong> {{inflection}}
-        </span>
+      <span id="user-count">
+        <strong>{{remaining}}</strong> {{inflection}}
+      </span>
       </footer>
-    </section>
+      </section>
 
     </script>
     <script src="js/libs/jquery-1.10.2.min.js"></script>
@@ -60,7 +72,7 @@
     <script src="js/models/user.js"></script>
     <script src="js/controllers/users_controller.js"></script>
     <script src="js/controllers/user_controller.js"></script>
-     <script src="js/views/edit_user_view.js"></script>
+    <script src="js/views/edit_user_view.js"></script>
 
   </body>
 </html>

@@ -14,6 +14,11 @@ App.UserController = Ember.ObjectController.extend({
       this.set('isEditingLastName', false);
       this.set('isEditingEmail', false);
       this.get('model').save();
+    },
+    deleteUser: function() {
+      var user = this.get('model');
+      user.deleteRecord();
+      user.save();
     }
    },
   isEditingFirstName: false,
