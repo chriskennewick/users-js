@@ -20,7 +20,7 @@ App.UserController = Ember.ObjectController.extend({
       user.deleteRecord();
       user.save();
     }
-   },
+  },
   isEditingFirstName: false,
   isEditingLastName: false,
   isEditingEmail: false,

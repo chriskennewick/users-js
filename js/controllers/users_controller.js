@@ -1,6 +1,5 @@
 App.UsersController = Ember.ArrayController.extend({
-    createUser: function () {
-    
+  createUser: function () { 
     var firstName = this.get('newFirstName');
     var lastName = this.get('newLastName');
     var email = this.get('newEmail');

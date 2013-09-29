@@ -3,29 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Users</title>
-    <!--<link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <script type="text/x-handlebars" data-template-name="users">
       <section id="userapp">
+      <h1> Users </h1>
       <section id="main">
-      <table>
+      <table class="table table-striped">
         <tr>
-          <td><label>First Name</label></td>
-          <td><label>Last Name</label></td>
-          <td><label>email</label></td>
+          <th><label>First Name</label></th>
+          <th><label>Last Name</label></th>
+          <th><label>Email</label></th>
+          <th></th>
         </tr>
-        <tr>
-          <td>
-          {{input type="text" id="new-first" placeholder="First Name" value=newFirstName action="createUser"}}
-          </td>
-          <td>
-          {{input type="text" id="new-last" placeholder="Last Name" value=newLastName action="createUser"}}
-          </td>
-          <td>
-          {{input type="text" id="new-email" placeholder="Email" value=newEmail action="createUser"}}
-          </td>
-        </tr>
+        
         {{#each itemController="user"}}
         <tr>
           <td {{bind-attr class="isEditingFirstName:editing"}}>
@@ -50,29 +44,46 @@
             {{/if}}
           </td>
           <td>
-          <button {{action "deleteUser"}}>delete</button>
+          <button class="btn-danger" {{action "deleteUser"}}>delete user</button>
         </tr>
         {{/each}}
+        <tr>
+          <td>
+          {{input type="text" id="new-first" placeholder="First Name" value=newFirstName action="createUser"}}
+          </td>
+          <td>
+          {{input type="text" id="new-last" placeholder="Last Name" value=newLastName action="createUser"}}
+          </td>
+          <td>
+          {{input type="text" id="new-email" placeholder="Email" value=newEmail action="createUser"}}
+          </td>
+          <td></td>
+        </tr>
       </table>
       </section>
 
       <footer id="footer">
-      <span id="user-count">
-        <strong>{{remaining}}</strong> {{inflection}}
-      </span>
+        <span id="user-count">
+          <strong>{{remaining}}</strong> {{inflection}}
+        </span>
       </footer>
       </section>
-
+      <footer id="info">
+        <p>Fill in fields for new user and hit enter</p>
+        <p>OR</p>
+        <p>Double-click a field to edit</p>
+      </footer>
     </script>
     <script src="js/libs/jquery-1.10.2.min.js"></script>
     <script src="js/libs/handlebars-1.0.0.js"></script>
     <script src="js/libs/ember-1.0.0.js"></script>
     <script src="js/libs/ember-data.js"></script>
+    <script src="js/libs/localstorage_adapter.js"></script>
     <script src="js/app.js"></script>
     <script src="js/models/user.js"></script>
     <script src="js/controllers/users_controller.js"></script>
     <script src="js/controllers/user_controller.js"></script>
     <script src="js/views/edit_user_view.js"></script>
-
+    <script src="js/libs/bootstrap.min.js"></script>
   </body>
 </html>
